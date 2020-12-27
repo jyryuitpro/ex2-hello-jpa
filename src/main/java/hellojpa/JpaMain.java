@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
 
@@ -22,32 +21,21 @@ public class JpaMain {
 
         try {
 
-            //회원 등록
-//            Member member = new Member();
-//            member.setId(2L);
-//            member.setName("HelloB");
-//            em.persist(member);
+            //비영속
+            Member member = new Member();
+            member.setId(100L);
+            member.setName("HelloJPA");
 
-            //회원 조회
-//            Member findMember = em.find(Member.class, 1L);
-//            System.out.println("findMember.getId() = " + findMember.getId());
-//            System.out.println("findMember.getName() = " + findMember.getName());
+            //영속
+            System.out.println("=== BEFORE ===");
+            em.persist(member);
 
-            //회원 삭제
-//            em.remove(findMember);
+            //준영속
+            em.detach(member);
+            System.out.println("=== AFTER ===");
 
-            //회원 수정
-//            Member findMember = em.find(Member.class, 1L);
-//            findMember.setName("HelloJPA");
-
-            List<Member> result = em.createQuery("select m from Member m", Member.class)
-                    .setFirstResult(5)
-                    .setMaxResults(8)
-                    .getResultList();
-
-            for (Member member : result) {
-                System.out.println("member.getName() = " + member.getName());
-            }
+            //삭제
+            em.remove(member);
 
             tx.commit();
         } catch (Exception e){
