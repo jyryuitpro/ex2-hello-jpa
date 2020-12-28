@@ -21,10 +21,13 @@ public class JpaMain {
 
         try {
 
-            Member member = new Member(200L, "member200");
-            em.persist(member);
+            Member member = em.find(Member.class, 150L);
+            member.setName("AAAAA");
 
-            em.flush();
+//            em.detach(member);
+            em.clear();
+
+            Member member2 = em.find(Member.class, 150L);
 
             System.out.println("==========================");
             tx.commit();
