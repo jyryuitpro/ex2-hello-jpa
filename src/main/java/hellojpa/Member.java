@@ -16,6 +16,8 @@ public class Member {
 //    @Column(name = "TEAM_ID")
 //    private Long teamId;
 
+    //외래 키가 있는 있는 곳을 주인으로 정해라
+    //진짜 매핑
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "TEAM_ID")
     private Team team;
