@@ -42,11 +42,20 @@ public class Team {
         this.name = name;
     }
 
-    public List<Member> getMembers() {
-        return members;
-    }
+//    public List<Member> getMembers() {
+//        return members;
+//    }
 
-    public void setMembers(List<Member> members) {
-        this.members = members;
-    }
+//    public void setMembers(List<Member> members) {
+//        this.members = members;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Team{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", members=" + members +
+//                '}';
+//    }
 }
