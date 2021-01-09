@@ -21,39 +21,16 @@ public class JpaMain {
         tx.begin();
 
         try {
-            Team team = new Team();
-            team.setName("TeamA");
-            em.persist(team);
-
             Member member = new Member();
             member.setUsername("member1");
-//            member.setTeamId(team.getId());
-//            member.setTeam(team);
-
-            //연관관계 편의 메소드 (둘 중에 하나만 만들자)
-            member.changeTeam(team);
 
             em.persist(member);
 
-            //연관관계 편의 메소드 (둘 중에 하나만 만들자)
-//            team.addMember(member);
+            Team team = new Team();
+            team.setName("TeamA");
+            team.getMembers().add(member);
 
-            //양방향 매핑시, 순수한 객체 관계를 고려하면 항상 양쪽다 값을 입력해야 한다.
-            //연관관계 편의 메소드를 생성하자
-            //Member에서 setTeam을 할때!
-//            team.getMembers().add(member);
-
-            em.flush();
-            em.clear();
-
-            Team findTeam = em.find(Team.class, team.getId());
-            List<Member> members = findTeam.getMembers();
-
-            System.out.println("========================================");
-            for (Member m : members) {
-                System.out.println("m.getUsername() = " + m.getUsername());
-            }
-            System.out.println("========================================");
+            em.persist(team);
 
             tx.commit();
         } catch (Exception e){

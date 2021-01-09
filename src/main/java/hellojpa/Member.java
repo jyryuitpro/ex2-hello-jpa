@@ -18,8 +18,12 @@ public class Member {
 
     //외래 키가 있는 있는 곳을 주인으로 정해라
     //진짜 매핑
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "TEAM_ID")
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "TEAM_ID")
+//    private Team team;
+
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID", insertable = false, updatable = false)
     private Team team;
 
     public Long getId() {
@@ -38,13 +42,13 @@ public class Member {
         this.username = username;
     }
 
-    public Team getTeam() {
-        return team;
-    }
+//    public Team getTeam() {
+//        return team;
+//    }
 
-    public void setTeam(Team team) {
-        this.team = team;
-    }
+//    public void setTeam(Team team) {
+//        this.team = team;
+//    }
 
     //연관관계 편의 메소드
 //    public void setTeam(Team team) {
@@ -53,12 +57,12 @@ public class Member {
 //        team.getMembers().add(this);
 //    }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", team=" + team +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "Member{" +
+//                "id=" + id +
+//                ", username='" + username + '\'' +
+//                ", team=" + team +
+//                '}';
+//    }
 }
